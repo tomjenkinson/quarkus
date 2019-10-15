@@ -1,6 +1,5 @@
 package io.quarkus.narayana.jta.runtime;
 
-import java.lang.reflect.Field;
 import java.util.Properties;
 
 import org.jboss.logging.Logger;
@@ -30,17 +29,7 @@ public class NarayanaJtaRecorder {
     }
 
     public void setDefaultProperties(Properties properties) {
-        //TODO: this is a huge hack to avoid loading XML parsers
-        //this needs a proper SPI
-        try {
-            Field field = PropertiesFactory.class.getDeclaredField("delegatePropertiesFactory");
-            field.setAccessible(true);
-            field.set(null, new QuarkusPropertiesFactory(properties));
-
-        } catch (Exception e) {
-            log.error("Could not override transaction properties factory", e);
-        }
-
+        PropertiesFactory.setDelegatePropertiesFactory(new QuarkusPropertiesFactory(properties));
         defaultProperties = properties;
     }
 
