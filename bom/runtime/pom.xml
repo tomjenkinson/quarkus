@@ -1512,8 +1512,19 @@
             </dependency>
             <dependency>
                 <groupId>org.jboss.narayana.jta</groupId>
-                <artifactId>narayana-jta</artifactId>
+                <artifactId>jta</artifactId>
                 <version>${narayana.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>org.jboss</groupId>
+              <artifactId>jboss-transaction-spi</artifactId>
+              <version>7.6.0.Final</version>
+              <exclusions>
+                <exclusion>
+                  <groupId>org.jboss.logging</groupId>
+                  <artifactId>jboss-logging-spi</artifactId>
+                </exclusion>
+              </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.jboss.narayana.jts</groupId>
