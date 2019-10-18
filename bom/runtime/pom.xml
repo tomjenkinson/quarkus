@@ -1514,6 +1514,12 @@
                 <groupId>org.jboss.narayana.jta</groupId>
                 <artifactId>jta</artifactId>
                 <version>${narayana.version}</version>
+              <exclusions>
+                <exclusion>
+                  <groupId>sun.jdk</groupId>
+                  <artifactId>jconsole</artifactId>
+                </exclusion>
+              </exclusions>
             </dependency>
             <dependency>
               <groupId>org.jboss</groupId>
@@ -1523,6 +1529,10 @@
                 <exclusion>
                   <groupId>org.jboss.logging</groupId>
                   <artifactId>jboss-logging-spi</artifactId>
+                </exclusion>
+                <exclusion>
+                  <groupId>org.jboss.spec.javax.resource</groupId>
+                  <artifactId>jboss-connector-api_1.7_spec</artifactId>
                 </exclusion>
               </exclusions>
             </dependency>
